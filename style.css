@@ -1,0 +1,677 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    background: url("https://raw.githubusercontent.com/BlackStar1991/Pokemon-Labs/main/lab.jpg") 50% 50% no-repeat;
+    background-size: 100%;
+    color: #fff;
+    font-family: "Mukta", sans-serif;
+    height: 100dvh;
+  }
+  
+  .logo {
+    display: block;
+    margin: 0 auto;
+    height: 10vh;
+    object-fit: contain;
+  }
+  
+  .slider {
+    position: relative;
+    height: 80vh;
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+  }
+  
+  .slider_list {
+    position: relative;
+    list-style: none;
+    width: 100%;
+    height: 46vh;
+    perspective: 1000px;
+    z-index: 1;
+  }
+  
+  .slider_item {
+    position: absolute;
+    top: calc(50% - 23vh);
+    left: calc(50% - 23vh);
+    width: 46vh;
+    height: 46vh;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    transition: transform 0.5s;
+    transform-style: preserve-3d;
+    transform-origin: bottom;
+    user-select: none;
+  }
+  
+  .slider_item:nth-child(1) {
+    transform: translate3d(-78.2vh, 0, 0) scale(0.8) rotateY(45deg);
+    z-index: 1;
+    opacity: 0;
+  }
+  
+  .slider_item:nth-child(2) {
+    transform: translate3d(-78.2vh, 0, 0) scale(0.8) rotateY(45deg);
+    z-index: 1;
+    opacity: 0;
+  }
+  
+  .slider_item:nth-child(3) {
+    transform: translate3d(-36.8vh, 0, 0) scale(0.9) rotateY(15deg);
+    z-index: 3;
+    opacity: 0;
+  }
+  
+  .slider_item:nth-child(4) {
+    transform: translate3d(0, 0, 0) scale(1) rotateY(0deg);
+    z-index: 4;
+  }
+  
+  .slider_item:nth-child(4) .block_description {
+    opacity: 1;
+  }
+  
+  .slider_item:nth-child(5) {
+    transform: translate3d(36.8vh, 0, 0) scale(0.9) rotateY(-15deg);
+    z-index: 3;
+  }
+  
+  .slider_item:nth-child(6) {
+    transform: translate3d(78.2vh, 0, 0) scale(0.8) rotateY(-45deg);
+    z-index: 2;
+  }
+  
+  .slider_item:nth-child(7) {
+    transform: translate3d(78.2vh, 0, 0) scale(0.8) rotateY(-45deg);
+    z-index: -1;
+  }
+  
+  .block_img {
+    height: 46vh;
+    width: 46vh;
+  }
+  
+  .block_img img {
+    width: 100%;
+    object-fit: cover;
+  }
+  
+  .block_description {
+    opacity: 0;
+    position: absolute;
+    top: 23vh;
+    left: calc(-100% - 15.3333333333vh);
+    padding: 10px;
+    transform: translateY(-50%);
+    width: 77vh;
+    height: auto;
+    background: #175C95;
+    border: 1px solid #3385ff;
+    border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    z-index: -1;
+  }
+  
+  .pok_head {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin-bottom: 10px;
+    padding: 10px;
+    border: 1px solid #38a0f0;
+    background-color: #0A1D47;
+    border-radius: 12px;
+  }
+  
+  .pok_block {
+    padding: 10px;
+    border: 1px solid #38a0f0;
+    background-color: #0A1D47;
+    border-radius: 12px;
+  }
+  
+  .pok_number {
+    margin: 0 10px;
+  }
+  
+  .pok_row {
+    margin-bottom: 15px;
+    font-size: 18px;
+  }
+  
+  .pok_type,
+  .pok_weak {
+    display: inline-block;
+    padding: 5px 10px 5px 40px;
+    border-radius: 4px;
+    margin-bottom: 5px;
+    margin-right: 5px;
+    color: #fff;
+    background-size: cover;
+    box-shadow: 0 8px 4px 4px rgba(4, 4, 4, 0.2);
+  }
+  
+  .type_electric {
+    background: radial-gradient(75% 50% at 50% 0%, #f4feff, transparent), radial-gradient(75% 35% at 50% 85%, #e0ac29, transparent), #fee529 url("https://raw.githubusercontent.com/BlackStar1991/Pokemon-Labs/main/icons/icon-electric.svg") 0 50% no-repeat;
+    color: #000;
+  }
+  
+  .type_ground {
+    background: radial-gradient(75% 50% at 50% 0%, #f4feff, transparent), radial-gradient(75% 35% at 50% 85%, #413002, transparent), #795200 url("https://raw.githubusercontent.com/BlackStar1991/Pokemon-Labs/main/icons/icon-ground.svg") 0 50% no-repeat;
+  }
+  
+  .type_water {
+    background: radial-gradient(75% 50% at 50% 0%, #f4feff, transparent), radial-gradient(75% 35% at 50% 85%, #0a66ad, transparent), #239dd8 url("https://raw.githubusercontent.com/BlackStar1991/Pokemon-Labs/main/icons/icon-water.svg") 0 50% no-repeat;
+  }
+  
+  .type_grass {
+    background: radial-gradient(75% 50% at 50% 0%, #f4feff, transparent), radial-gradient(75% 35% at 50% 85%, #00a732, transparent), #00791a url("https://raw.githubusercontent.com/BlackStar1991/Pokemon-Labs/main/icons/icon-grass.svg") 0 50% no-repeat;
+  }
+  
+  .type_ice {
+    background: radial-gradient(75% 35% at 50% 85%, #f4feff, transparent), radial-gradient(75% 35% at 50% 85%, #096cae, transparent), #19aff4 url("https://raw.githubusercontent.com/BlackStar1991/Pokemon-Labs/main/icons/icon-ice.svg") 0 50% no-repeat;
+  }
+  
+  .type_rock {
+    background: radial-gradient(75% 50% at 50% 0%, #f4feff, transparent), radial-gradient(75% 35% at 50% 85%, #7d7a76, transparent), #4d4745 url("https://raw.githubusercontent.com/BlackStar1991/Pokemon-Labs/main/icons/icon-rock.svg") 0 50% no-repeat;
+  }
+  
+  .type_flying {
+    background: radial-gradient(75% 50% at 50% 0%, #f4feff, transparent), radial-gradient(75% 35% at 50% 85%, #09634e, transparent), #08a081 url("https://raw.githubusercontent.com/BlackStar1991/Pokemon-Labs/main/icons/icon-flying.svg") 0 50% no-repeat;
+  }
+  
+  .type_psychic {
+    background: radial-gradient(75% 50% at 50% 0%, #f4feff, transparent), radial-gradient(75% 35% at 50% 85%, #f970ff, transparent), #c222c7 url("https://raw.githubusercontent.com/BlackStar1991/Pokemon-Labs/main/icons/icon-psychic.svg") 0 50% no-repeat;
+  }
+  
+  .type_fire {
+    background: radial-gradient(75% 50% at 50% 0%, #f4feff, transparent), radial-gradient(75% 35% at 50% 85%, #fe7b02, transparent), #b01608 url("https://raw.githubusercontent.com/BlackStar1991/Pokemon-Labs/main/icons/icon-fire.svg") 0 50% no-repeat;
+  }
+  
+  .type_normal {
+    background: radial-gradient(75% 50% at 50% 0%, #f4feff, transparent), radial-gradient(75% 35% at 50% 85%, #a3a09b, transparent), #3E3F50 url("https://raw.githubusercontent.com/BlackStar1991/Pokemon-Labs/main/icons/icon-normal.svg") 0 50% no-repeat;
+  }
+  
+  .type_poison {
+    background: radial-gradient(75% 50% at 50% 0%, #f4feff, transparent), radial-gradient(75% 35% at 50% 85%, #5911a2, transparent), #320767 url("https://raw.githubusercontent.com/BlackStar1991/Pokemon-Labs/main/icons/icon-poison.svg") 0 50% no-repeat;
+  }
+  
+  .pok_rock {
+    background: radial-gradient(75% 50% at 50% 0%, #f4feff, transparent), radial-gradient(75% 35% at 50% 85%, #999373, transparent), #806644 url("https://raw.githubusercontent.com/BlackStar1991/Pokemon-Labs/main/icons/icon-rock.svg") 0 50% no-repeat;
+  }
+  
+  .pok_ground {
+    background: radial-gradient(75% 50% at 50% 0%, #f4feff, transparent), radial-gradient(75% 35% at 50% 85%, #3b3307, transparent), #524204 url("https://raw.githubusercontent.com/BlackStar1991/Pokemon-Labs/main/icons/icon-ground.svg") 0 50% no-repeat;
+  }
+  
+  .type_fighting {
+    background: radial-gradient(75% 50% at 50% 0%, #f4feff, transparent), radial-gradient(75% 35% at 50% 85%, #6e3251, transparent), #4b3131 url("https://raw.githubusercontent.com/BlackStar1991/Pokemon-Labs/main/icons/icon-fighting.svg") 0 50% no-repeat;
+  }
+  
+  .type_steel {
+    background: radial-gradient(75% 50% at 50% 0%, #f4feff, transparent), radial-gradient(75% 35% at 50% 85%, #325b5a, transparent), #63717e url("https://raw.githubusercontent.com/BlackStar1991/Pokemon-Labs/main/icons/icon-steel.svg") 0 50% no-repeat;
+  }
+  
+  .pok_desc {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    margin-top: 10px;
+    padding: 20px;
+    border: 1px solid #38a0f0;
+    background-color: #0A1D47;
+    border-radius: 12px;
+  }
+  
+  .pok_elements {
+    width: 100%;
+    max-width: 200px;
+    margin-right: 10px;
+  }
+  
+  .pok_elements p {
+    margin-bottom: 10px;
+  }
+  
+  .pok_elements .icon {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    background-size: contain;
+  }
+  
+  .icon_male {
+    background: url("https://raw.githubusercontent.com/BlackStar1991/Pokemon-Labs/main/icons/male.svg") 50% 50% no-repeat;
+  }
+  
+  .icon_female {
+    background: url("https://raw.githubusercontent.com/BlackStar1991/Pokemon-Labs/main/icons/female.svg") 50% 50% no-repeat;
+  }
+  
+  .pok_value {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .pok_value li {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+  
+  .pok_value b {
+    width: 150px;
+  }
+  
+  .pok_stats {
+    --bg-gradient: linear-gradient(to left, #026325, #0d712e, #8BC541, #F5EA14, #FFC50A, #F6931D, #FF3C00, #FF0000);
+    --animation-duration: 2s;
+    position: relative;
+    display: inline-block;
+    width: 150px;
+    height: 20px;
+    background: var(--bg-gradient);
+    overflow: hidden;
+  }
+  
+  .pok_stats:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #fff;
+    z-index: 2;
+    animation: moving var(--animation-duration) forwards;
+  }
+  
+  .pok_stats[data-id="1"] {
+    --animation-end: calc(100% / 15 * 1);
+  }
+  
+  .pok_stats[data-id="1"]:before {
+    animation-name: moving;
+    --translate-x-end: var(--animation-end);
+  }
+  
+  @keyframes moving {
+    0% {
+      transform: translateX(100%);
+    }
+    100% {
+      transform: translateX(var(--translate-x-end));
+    }
+  }
+  .pok_stats[data-id="2"] {
+    --animation-end: calc(100% / 15 * 2);
+  }
+  
+  .pok_stats[data-id="2"]:before {
+    animation-name: moving;
+    --translate-x-end: var(--animation-end);
+  }
+  
+  @keyframes moving {
+    0% {
+      transform: translateX(100%);
+    }
+    100% {
+      transform: translateX(var(--translate-x-end));
+    }
+  }
+  .pok_stats[data-id="3"] {
+    --animation-end: calc(100% / 15 * 3);
+  }
+  
+  .pok_stats[data-id="3"]:before {
+    animation-name: moving;
+    --translate-x-end: var(--animation-end);
+  }
+  
+  @keyframes moving {
+    0% {
+      transform: translateX(100%);
+    }
+    100% {
+      transform: translateX(var(--translate-x-end));
+    }
+  }
+  .pok_stats[data-id="4"] {
+    --animation-end: calc(100% / 15 * 4);
+  }
+  
+  .pok_stats[data-id="4"]:before {
+    animation-name: moving;
+    --translate-x-end: var(--animation-end);
+  }
+  
+  @keyframes moving {
+    0% {
+      transform: translateX(100%);
+    }
+    100% {
+      transform: translateX(var(--translate-x-end));
+    }
+  }
+  .pok_stats[data-id="5"] {
+    --animation-end: calc(100% / 15 * 5);
+  }
+  
+  .pok_stats[data-id="5"]:before {
+    animation-name: moving;
+    --translate-x-end: var(--animation-end);
+  }
+  
+  @keyframes moving {
+    0% {
+      transform: translateX(100%);
+    }
+    100% {
+      transform: translateX(var(--translate-x-end));
+    }
+  }
+  .pok_stats[data-id="6"] {
+    --animation-end: calc(100% / 15 * 6);
+  }
+  
+  .pok_stats[data-id="6"]:before {
+    animation-name: moving;
+    --translate-x-end: var(--animation-end);
+  }
+  
+  @keyframes moving {
+    0% {
+      transform: translateX(100%);
+    }
+    100% {
+      transform: translateX(var(--translate-x-end));
+    }
+  }
+  .pok_stats[data-id="7"] {
+    --animation-end: calc(100% / 15 * 7);
+  }
+  
+  .pok_stats[data-id="7"]:before {
+    animation-name: moving;
+    --translate-x-end: var(--animation-end);
+  }
+  
+  @keyframes moving {
+    0% {
+      transform: translateX(100%);
+    }
+    100% {
+      transform: translateX(var(--translate-x-end));
+    }
+  }
+  .pok_stats[data-id="8"] {
+    --animation-end: calc(100% / 15 * 8);
+  }
+  
+  .pok_stats[data-id="8"]:before {
+    animation-name: moving;
+    --translate-x-end: var(--animation-end);
+  }
+  
+  @keyframes moving {
+    0% {
+      transform: translateX(100%);
+    }
+    100% {
+      transform: translateX(var(--translate-x-end));
+    }
+  }
+  .pok_stats[data-id="9"] {
+    --animation-end: calc(100% / 15 * 9);
+  }
+  
+  .pok_stats[data-id="9"]:before {
+    animation-name: moving;
+    --translate-x-end: var(--animation-end);
+  }
+  
+  @keyframes moving {
+    0% {
+      transform: translateX(100%);
+    }
+    100% {
+      transform: translateX(var(--translate-x-end));
+    }
+  }
+  .pok_stats[data-id="10"] {
+    --animation-end: calc(100% / 15 * 10);
+  }
+  
+  .pok_stats[data-id="10"]:before {
+    animation-name: moving;
+    --translate-x-end: var(--animation-end);
+  }
+  
+  @keyframes moving {
+    0% {
+      transform: translateX(100%);
+    }
+    100% {
+      transform: translateX(var(--translate-x-end));
+    }
+  }
+  .pok_stats[data-id="11"] {
+    --animation-end: calc(100% / 15 * 11);
+  }
+  
+  .pok_stats[data-id="11"]:before {
+    animation-name: moving;
+    --translate-x-end: var(--animation-end);
+  }
+  
+  @keyframes moving {
+    0% {
+      transform: translateX(100%);
+    }
+    100% {
+      transform: translateX(var(--translate-x-end));
+    }
+  }
+  .pok_stats[data-id="12"] {
+    --animation-end: calc(100% / 15 * 12);
+  }
+  
+  .pok_stats[data-id="12"]:before {
+    animation-name: moving;
+    --translate-x-end: var(--animation-end);
+  }
+  
+  @keyframes moving {
+    0% {
+      transform: translateX(100%);
+    }
+    100% {
+      transform: translateX(var(--translate-x-end));
+    }
+  }
+  .pok_stats[data-id="13"] {
+    --animation-end: calc(100% / 15 * 13);
+  }
+  
+  .pok_stats[data-id="13"]:before {
+    animation-name: moving;
+    --translate-x-end: var(--animation-end);
+  }
+  
+  @keyframes moving {
+    0% {
+      transform: translateX(100%);
+    }
+    100% {
+      transform: translateX(var(--translate-x-end));
+    }
+  }
+  .pok_stats[data-id="14"] {
+    --animation-end: calc(100% / 15 * 14);
+  }
+  
+  .pok_stats[data-id="14"]:before {
+    animation-name: moving;
+    --translate-x-end: var(--animation-end);
+  }
+  
+  @keyframes moving {
+    0% {
+      transform: translateX(100%);
+    }
+    100% {
+      transform: translateX(var(--translate-x-end));
+    }
+  }
+  .pok_stats[data-id="15"] {
+    --animation-end: calc(100% / 15 * 15);
+  }
+  
+  .pok_stats[data-id="15"]:before {
+    animation-name: moving;
+    --translate-x-end: var(--animation-end);
+  }
+  
+  @keyframes moving {
+    0% {
+      transform: translateX(100%);
+    }
+    100% {
+      transform: translateX(var(--translate-x-end));
+    }
+  }
+  .pok_stats:after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    --_g: transparent 90deg, #000 0;
+    background: conic-gradient(from 90deg at 1px 1px, var(--_g)), conic-gradient(from 90deg at 1px 1px, var(--_g)), transparent;
+    background-size: 10px 100%;
+    z-index: 3;
+  }
+  
+  .slider_buttons {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .slider_button {
+    width: 10vh;
+    height: 10vh;
+    border-radius: 50%;
+    cursor: pointer;
+    background-color: #fff;
+    opacity: 0.7;
+  }
+  
+  .slider_button:hover {
+    opacity: 1;
+  }
+  
+  .prev {
+    transform: scale(-1, 1);
+  }
+  
+  @media (max-height: 640px) {
+    .block_description {
+      width: 110vh;
+      left: calc(-100% - 46vh);
+    }
+  }
+  @media (max-height: 560px) {
+    .logo {
+      display: none;
+    }
+  
+    .slider {
+      height: 90vh;
+    }
+  
+    .slider_item,
+  .block_img {
+      height: 55vh;
+      width: 55vh;
+    }
+  
+    .block_description {
+      width: 150vh;
+      left: calc(-100% - 66vh);
+    }
+  
+    .pok_row {
+      margin-bottom: 5px;
+    }
+  }
+  @media (max-height: 500px) {
+    .slider_item,
+  .block_img {
+      height: 70vh;
+      width: 70vh;
+    }
+  
+    .block_description {
+      width: 170vh;
+      left: calc(-100% - 43.75vh);
+    }
+  
+    .slider_item:nth-child(1) {
+      transform: translate3d(-119vh, 0, 0) scale(0.8) rotateY(45deg);
+      z-index: 1;
+      opacity: 0;
+    }
+  
+    .slider_item:nth-child(2) {
+      transform: translate3d(-119vh, 0, 0) scale(0.8) rotateY(45deg);
+      z-index: 1;
+      opacity: 0;
+    }
+  
+    .slider_item:nth-child(3) {
+      transform: translate3d(-56vh, 0, 0) scale(0.9) rotateY(15deg);
+      z-index: 3;
+      opacity: 0;
+    }
+  
+    .slider_item:nth-child(4) {
+      transform: translate3d(0, 0, 0) scale(1) rotateY(0deg);
+      z-index: 4;
+    }
+  
+    .slider_item:nth-child(4) .block_description {
+      opacity: 1;
+    }
+  
+    .slider_item:nth-child(5) {
+      transform: translate3d(56vh, 0, 0) scale(0.9) rotateY(-15deg);
+      z-index: 3;
+    }
+  
+    .slider_item:nth-child(6) {
+      transform: translate3d(119vh, 0, 0) scale(0.8) rotateY(-45deg);
+      z-index: 2;
+    }
+  
+    .slider_item:nth-child(7) {
+      transform: translate3d(119vh, 0, 0) scale(0.8) rotateY(-45deg);
+      z-index: -1;
+    }
+  }
